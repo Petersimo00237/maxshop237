@@ -100,12 +100,12 @@ function sendOrderEmail() {
   }
 
   let subject = `Commande - ${name}`;
-  let body = `Bonjour, je suis ${name}. Voici ma commande :%0D`;
+  let body = `Bonjour, je suis ${name}. Voici ma commande :%0D%0A`;
   cart.forEach(item => {
-    body += `- ${item.name} x${item.qty}`;
+    body += `- ${item.name} x${item.qty}%0D%0AImage: ${item.image}%0D%0A`;
   });
-  body += `Total: ${document.getElementById('cart-total').innerText} FCFA`;
-  body += `%0D---%0DTéléphone: ${phone}%0DAdresse: ${address}`;
+  body += `%0D%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
+  body += `%0D%0A---%0D%0ATéléphone: ${phone}%0D%0AAdresse: ${address}`;
 
   const vendeurEmail = "lecreateur2006@gmail.com";
   window.location.href = `mailto:${vendeurEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
@@ -126,33 +126,12 @@ function updateCart() {
 
   cart.forEach(item => {
     total += item.price * item.qty;
-
     const li = document.createElement('li');
-    li.style.display = 'flex';
-    li.style.alignItems = 'center';
-    li.style.marginBottom = '10px';
-
-    const img = document.createElement('img');
-    img.src = item.image;
-    img.alt = item.name;
-    img.style.width = '40px';
-    img.style.height = '40px';
-    img.style.objectFit = 'cover';
-    img.style.borderRadius = '5px';
-    img.style.marginRight = '10px';
-
-    const text = document.createElement('span');
-    text.innerText = `${item.name} x${item.qty}`;
-
-    const removeBtn = document.createElement('button');
-    removeBtn.innerText = '❌';
-    removeBtn.style.marginLeft = 'auto';
-    removeBtn.onclick = () => removeFromCart(item.id);
-
-    li.appendChild(img);
-    li.appendChild(text);
-    li.appendChild(removeBtn);
-
+    li.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" style="width:40px;height:40px;border-radius:4px;margin-right:5px;vertical-align:middle;">
+      ${item.name} x${item.qty}
+      <button onclick="removeFromCart(${item.id})" style="float:right;">❌</button>
+    `;
     cartItems.appendChild(li);
   });
 
