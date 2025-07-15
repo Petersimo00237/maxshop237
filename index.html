@@ -18,13 +18,22 @@
   </main>
 
   <div id="cart" class="cart closed">
-    <h2>Mon Panier</h2>
-    <ul id="cart-items"></ul>
-    <p>Total : <span id="cart-total">0</span> FCFA</p>
-    <button onclick="clearCart()">Vider le panier</button>
-    <button onclick="sendOrderWhatsApp()">Commander via WhatsApp</button>
-    <button onclick="sendOrderEmail()">Commander par Email</button>
-  </div>
+  <h2>Mon Panier</h2>
+  <ul id="cart-items"></ul>
+  <p>Total : <span id="cart-total">0</span> FCFA</p>
+  <button onclick="clearCart()">Vider le panier</button>
+
+  <hr>
+
+  <h3>Vos informations</h3>
+  <input type="text" id="client-name" placeholder="Nom complet" />
+  <input type="tel" id="client-phone" placeholder="Téléphone" />
+  <textarea id="client-address" placeholder="Adresse de livraison"></textarea>
+
+  <button onclick="sendOrderWhatsApp()">Commander via WhatsApp</button>
+  <button onclick="sendOrderEmail()">Commander par Email</button>
+</div>
+
 
   <script src="script.js"></script>
 </body>

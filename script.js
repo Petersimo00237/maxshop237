@@ -62,14 +62,24 @@ function sendOrderWhatsApp() {
     return;
   }
 
-  let message = "Bonjour, je souhaite commander :%0A";
+  const name = document.getElementById('client-name').value.trim();
+  const phone = document.getElementById('client-phone').value.trim();
+  const address = document.getElementById('client-address').value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Veuillez remplir toutes les informations.");
+    return;
+  }
+
+  let message = `Bonjour, je suis ${name}. Voici ma commande :%0A`;
   cart.forEach(item => {
     message += `- ${item.name} x${item.qty}%0AImage: ${item.image}%0A`;
   });
   message += `%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
+  message += `%0A---%0ATéléphone: ${phone}%0AAdresse: ${address}`;
 
-  const phone = "237652439276"; // ton numéro
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const vendeurPhone = "237652439276"; // à modifier
+  const url = `https://wa.me/${vendeurPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
 
@@ -80,16 +90,27 @@ function sendOrderEmail() {
     return;
   }
 
-  let subject = "Commande Boutique";
-  let body = "Bonjour, je souhaite commander :%0D%0A";
+  const name = document.getElementById('client-name').value.trim();
+  const phone = document.getElementById('client-phone').value.trim();
+  const address = document.getElementById('client-address').value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Veuillez remplir toutes les informations.");
+    return;
+  }
+
+  let subject = `Commande - ${name}`;
+  let body = `Bonjour, je suis ${name}. Voici ma commande :%0D%0A`;
   cart.forEach(item => {
     body += `- ${item.name} x${item.qty}%0D%0AImage: ${item.image}%0D%0A`;
   });
   body += `%0D%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
+  body += `%0D%0A---%0D%0ATéléphone: ${phone}%0D%0AAdresse: ${address}`;
 
-  const email = "lecreateur2006@gmail.com";
-  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  const vendeurEmail = "lecreateur2006@gmail.com";
+  window.location.href = `mailto:${vendeurEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
+
 
 document.getElementById('searchInput').addEventListener('input', displayProducts);
 
