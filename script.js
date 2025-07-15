@@ -73,7 +73,7 @@ function sendOrderWhatsApp() {
 
   let message = `Bonjour, je suis ${name}. Voici ma commande :%0A`;
   cart.forEach(item => {
-    message += `- ${item.name} x${item.qty}%0AImage: ${product.image}%0A`;
+    message += `- ${item.name} x${item.qty}%0AImage: ${item.image}%0A`;
   });
   message += `%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
   message += `%0A---%0ATéléphone: ${phone}%0AAdresse: ${address}`;
@@ -102,7 +102,7 @@ function sendOrderEmail() {
   let subject = `Commande - ${name}`;
   let body = `Bonjour, je suis ${name}. Voici ma commande :%0D`;
   cart.forEach(item => {
-    body += `- ${item.name} x${item.qty}%0DImage: ${product.image}%0D`;
+    body += `- ${item.name} x${item.qty}%0DImage: ${item.image}%0D`;
   });
   body += `Total: ${document.getElementById('cart-total').innerText} FCFA`;
   body += `%0D---%0DTéléphone: ${phone}%0DAdresse: ${address}`;
@@ -126,12 +126,33 @@ function updateCart() {
 
   cart.forEach(item => {
     total += item.price * item.qty;
+
     const li = document.createElement('li');
-    li.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" style="width:40px;height:40px;border-radius:4px;margin-right:5px;vertical-align:middle;">
-      ${item.name} x${item.qty}
-      <button onclick="removeFromCart(${item.id})" style="float:right;">❌</button>
-    `;
+    li.style.display = 'flex';
+    li.style.alignItems = 'center';
+    li.style.marginBottom = '10px';
+
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = item.name;
+    img.style.width = '40px';
+    img.style.height = '40px';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '5px';
+    img.style.marginRight = '10px';
+
+    const text = document.createElement('span');
+    text.innerText = `${item.name} x${item.qty}`;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.innerText = '❌';
+    removeBtn.style.marginLeft = 'auto';
+    removeBtn.onclick = () => removeFromCart(item.id);
+
+    li.appendChild(img);
+    li.appendChild(text);
+    li.appendChild(removeBtn);
+
     cartItems.appendChild(li);
   });
 
