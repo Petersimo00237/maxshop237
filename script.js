@@ -71,12 +71,12 @@ function sendOrderWhatsApp() {
     return;
   }
 
-  let message = `Bonjour, je suis ${name}. Voici ma commande :%0A`;
+  let message = `Bonjour, je suis ${name}. Voici ma commande :`;
   cart.forEach(item => {
-    message += `- ${item.name} x${item.qty}%0AImage: ${item.image}%0A`;
+    message += `- ${item.name} x${item.qty}Image: ${item.image} <br>` ;
   });
-  message += `%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
-  message += `%0A---%0ATéléphone: ${phone}%0AAdresse: ${address}`;
+  message += `Total: ${document.getElementById('cart-total').innerText} FCFA <br>`;
+  message += `---Téléphone: ${phone}AAdresse: ${address} <br>`;
 
   const vendeurPhone = "237652439276"; // à modifier
   const url = `https://wa.me/${vendeurPhone}?text=${encodeURIComponent(message)}`;
