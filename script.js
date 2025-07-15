@@ -1,8 +1,8 @@
 const products = [
-  { id: 1, name: "Chaussures", price: 15000, image: "images/acd1.jpg" },
-  { id: 2, name: "T-shirt Homme", price: 8000, image: "images/acd2.jpg" },
-  { id: 3, name: "Casquette", price: 3000, image: "images/acd3.jpg" },
-  { id: 4, name: "Sac à Dos", price: 12000, image: "images/acd4.jpg" }
+  { id: 1, name: "Chemisette", price: 15000, image: "images/acd1.jpg" },
+  { id: 2, name: "pantalon jean", price: 8000, image: "images/acd2.jpg" },
+  { id: 3, name: "Pantalon nv", price: 3000, image: "images/acd3.jpg" },
+  { id: 4, name: "Crot top", price: 12000, image: "images/acd4.jpg" }
 ];
 
 let cart = [];
@@ -78,7 +78,7 @@ function sendOrderWhatsApp() {
   message += `Total: ${document.getElementById('cart-total').innerText} `;
   message += `---Téléphone: ${phone}AAdresse: ${address} `;
 
-  const vendeurPhone = "237652439276"; // à modifier
+  const vendeurPhone = "237656731577"; // à modifier
   const url = `https://wa.me/${vendeurPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
@@ -107,7 +107,7 @@ function sendOrderEmail() {
   body += `%0D%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
   body += `%0D%0A---%0D%0ATéléphone: ${phone}%0D%0AAdresse: ${address}`;
 
-  const vendeurEmail = "lecreateur2006@gmail.com";
+  const vendeurEmail = "maximesimo@icloud.com";
   window.location.href = `mailto:${vendeurEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
 

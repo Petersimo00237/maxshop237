@@ -63,7 +63,7 @@ main {
 }
 
 button {
-  background-color: #198754;
+  background-color: #035272;
   color: white;
   border: none;
   padding: 0.5em 1em;
@@ -73,7 +73,7 @@ button {
 }
 
 button:hover {
-  background-color: #145c38;
+  background-color: #035272;
 }
 
 .cart {
