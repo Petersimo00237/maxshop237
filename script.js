@@ -1,8 +1,8 @@
 const products = [
-  { id: 1, name: "Chaussures", price: 15000, image: "acd1.jpg" },
-  { id: 2, name: "T-shirt Homme", price: 8000, image: "acd2.jpg" },
-  { id: 3, name: "Casquette", price: 3000, image: "acd3.jpg" },
-  { id: 4, name: "Sac à Dos", price: 12000, image: "acd4.jpg" }
+  { id: 1, name: "Chaussures", price: 15000, image: "images/acd1.jpg" },
+  { id: 2, name: "T-shirt Homme", price: 8000, image: "images/acd2.jpg" },
+  { id: 3, name: "Casquette", price: 3000, image: "images/acd3.jpg" },
+  { id: 4, name: "Sac à Dos", price: 12000, image: "images/acd4.jpg" }
 ];
 
 let cart = [];
