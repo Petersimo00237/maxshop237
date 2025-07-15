@@ -73,10 +73,10 @@ function sendOrderWhatsApp() {
 
   let message = `Bonjour, je suis ${name}. Voici ma commande :`;
   cart.forEach(item => {
-    message += `- ${item.name} x${item.qty}Image: ${item.image} <br>` ;
+    message += `- ${item.name} x${item.qty}` ;
   });
-  message += `Total: ${document.getElementById('cart-total').innerText} FCFA <br>`;
-  message += `---Téléphone: ${phone}AAdresse: ${address} <br>`;
+  message += `Total: ${document.getElementById('cart-total').innerText} `;
+  message += `---Téléphone: ${phone}AAdresse: ${address} `;
 
   const vendeurPhone = "237652439276"; // à modifier
   const url = `https://wa.me/${vendeurPhone}?text=${encodeURIComponent(message)}`;
@@ -102,7 +102,7 @@ function sendOrderEmail() {
   let subject = `Commande - ${name}`;
   let body = `Bonjour, je suis ${name}. Voici ma commande :%0D`;
   cart.forEach(item => {
-    body += `- ${item.name} x${item.qty}%0DImage: ${item.image}%0D`;
+    body += `- ${item.name} x${item.qty}`;
   });
   body += `Total: ${document.getElementById('cart-total').innerText} FCFA`;
   body += `%0D---%0DTéléphone: ${phone}%0DAdresse: ${address}`;
