@@ -102,7 +102,7 @@ function sendOrderEmail() {
   let subject = `Commande - ${name}`;
   let body = `Bonjour, je suis ${name}. Voici ma commande :%0D%0A`;
   cart.forEach(item => {
-    body += `- ${item.name} x${item.qty}%0D%0AImage: ${item.image}%0D%0A`;
+    body += `- ${item.name} x${item.qty}%0D%0A %0D%0A`;
   });
   body += `%0D%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
   body += `%0D%0A---%0D%0ATéléphone: ${phone}%0D%0AAdresse: ${address}`;
