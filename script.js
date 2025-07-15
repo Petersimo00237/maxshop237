@@ -73,7 +73,7 @@ function sendOrderWhatsApp() {
 
   let message = `Bonjour, je suis ${name}. Voici ma commande :%0A`;
   cart.forEach(item => {
-    message += `- ${item.name} x${item.qty}%0AImage: ${item.image}%0A`;
+    message += `- ${item.name} x${item.qty}%0AImage: ${product.image}%0A`;
   });
   message += `%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
   message += `%0A---%0ATéléphone: ${phone}%0AAdresse: ${address}`;
@@ -100,12 +100,12 @@ function sendOrderEmail() {
   }
 
   let subject = `Commande - ${name}`;
-  let body = `Bonjour, je suis ${name}. Voici ma commande :%0D%0A`;
+  let body = `Bonjour, je suis ${name}. Voici ma commande :%0D`;
   cart.forEach(item => {
-    body += `- ${item.name} x${item.qty}%0D%0AImage: ${item.image}%0D%0A`;
+    body += `- ${item.name} x${item.qty}%0DImage: ${item.image}%0D`;
   });
-  body += `%0D%0ATotal: ${document.getElementById('cart-total').innerText} FCFA`;
-  body += `%0D%0A---%0D%0ATéléphone: ${phone}%0D%0AAdresse: ${address}`;
+  body += `Total: ${document.getElementById('cart-total').innerText} FCFA`;
+  body += `%0D---%0DTéléphone: ${phone}%0DAdresse: ${address}`;
 
   const vendeurEmail = "lecreateur2006@gmail.com";
   window.location.href = `mailto:${vendeurEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
